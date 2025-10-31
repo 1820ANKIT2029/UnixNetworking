@@ -78,10 +78,11 @@ int main() {
             FD_SET(client_fd, &allset);
             maxfd1 = MAX(maxfd1, client_fd);
             client_size = MAX(client_size, i);
+
+            client_overflow:
             if(--nready <= 0) continue;
         }
     
-        client_overflow:
         // client connection handler
         int i, n;
         for(i=0; i<=client_size; i++) {
